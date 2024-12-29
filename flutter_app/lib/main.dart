@@ -33,7 +33,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _channel = WebSocketChannel.connect(
-    Uri.parse('ws://localhost:8000/ws'),
+    Uri.parse('ws://localhost:8001/ws'),
   );
   
   Map<String, dynamic> _currentData = {
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _controlDevice(String device, String action) async {
     try {
       final response = await http.post(
-        Uri.parse('http://localhost:8000/control/$device/$action'),
+        Uri.parse('http://localhost:8001/control/$device/$action'),
       );
       if (response.statusCode != 200) {
         throw Exception('Failed to control device');
